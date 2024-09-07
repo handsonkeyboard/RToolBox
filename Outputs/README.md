@@ -1,0 +1,1 @@
+This folder contains the generated outputs (e.g., plots, tables, csv files or excel workbooks).
