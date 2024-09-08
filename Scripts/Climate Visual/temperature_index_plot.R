@@ -119,7 +119,7 @@ t_line.animation <- t_data    %>% # set Year as the x-axis and Avg_Temp as the y
                                        title = "GLOBAL LAND-OCEAN TEMPERATURE INDEX",
                                        subtitle = "Data source: NASA's Goddard Institute for Space Studies (GISS)."#,
                                        #caption = "Source:"
-                                  ) +
+                                       ) +
                                   theme_light() +
                                   # further customise specific aspects of the plot's theme
                                   theme(# remove the tick marks from both the x-axis and y-axis
