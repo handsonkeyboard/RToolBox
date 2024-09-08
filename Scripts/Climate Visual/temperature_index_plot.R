@@ -1,3 +1,7 @@
+# clear workspace
+rm(list=ls())
+
+
 # load libraries
 library(tidyverse)
 library(ggplot2)
@@ -9,9 +13,10 @@ df <- read_csv("Data/Climate Visual/GLB.Ts+dSST.csv", skip = 1, na = "***")
 
 # select only annual average temperature 
 df_selected <- df %>% select(Year, `J-D`) %>%
-                      rename(Avg_Temp = `J-D`)
+                      rename(Avg_Temp = `J-D`) %>%
+                      drop_na()
 
-# plot a static graph 
+# plot a line chart 
 plot <- df_selected %>% # set Year as the x-axis and Avg_Temp as the y-axis
                         ggplot(aes(x = Year, y = Avg_Temp)) +
                         # add a line graph to the plot 
@@ -24,7 +29,7 @@ plot <- df_selected %>% # set Year as the x-axis and Avg_Temp as the y-axis
                         # add a LOESS smoothed line to help visualize the trend, with no standard error band (se = FALSE)
                         # assign it to color category 2
                         # set the smoothing parameter (span) to be 0.1 for a close fit
-                        geom_smooth(aes(color = "2"), se = FALSE, method = "loess", size = 1, span = 0.1, show.legend = FALSE) 
+                        geom_smooth(aes(color = "2"), se = FALSE, method = "loess", size = 1, span = 0.1, show.legend = FALSE) +
                         # set the x-axis breaks every 20 years from 1880 to 2023
                         scale_x_continuous(breaks = seq(1880, 2023, 20), expand = c(0, 0)) +
                         # set the y-axis limit from -0.5 to 1.5    
